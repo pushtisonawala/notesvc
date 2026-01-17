@@ -46,7 +46,7 @@ func (n *NotesController) DeleteNotes() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		id := c.Param("id")
 		deletedNote := n.NotesService.DeleteNotes(id)
-		if deletedNote.Id == 0 {
+		if deletedNote.ID.IsZero() {
 			c.JSON(http.StatusNotFound, gin.H{
 				"message": "Note not found",
 			})
